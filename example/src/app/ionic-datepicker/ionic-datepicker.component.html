@@ -1,0 +1,39 @@
+<ion-content class="ionic_datepicker_modal_content">
+  <ion-list>
+    <ion-grid>
+
+      <!-- Previous and next month control -->
+      <ion-row class="month">
+        <ion-col size="4">
+          <ion-button [disabled]="shouldDisablePrevMonth" (click)="showPrevMonth()">{{prevMonth.format('MMM')}}
+          </ion-button>
+        </ion-col>
+        <ion-col size="4">{{currentMonth.format('MMM')}}</ion-col>
+        <ion-col size="4">
+          <ion-button [disabled]="shouldDisableNextMonth" (click)="showNextMonth()">{{nextMonth.format('MMM')}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- Week list -->
+      <ion-row class="week">
+        <ion-col size="1" *ngFor="let day of DAY_LIST">
+          {{day}}
+        </ion-col>
+      </ion-row>
+
+      <!-- Date list -->
+      <ion-row class="day" *ngFor="let row of rows">
+        <ion-col size="1" *ngFor="let col of cols">
+          <label *ngIf="daysList[row+col] != null" [ngClass]="{
+              disabled: isDisabled(daysList[row+col]), 
+              today: (currentDate.format('DD-MM-YYYY') == daysList[row+col].format('DD-MM-YYYY'))
+            }">
+            {{daysList[row+col].format('D')}}
+          </label>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </ion-list>
+</ion-content>
