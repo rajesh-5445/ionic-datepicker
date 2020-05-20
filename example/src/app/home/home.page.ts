@@ -15,7 +15,11 @@ export class HomePage {
     const modal = await this.modalCtrl.create({
       component: IonicDatepickerComponent
     });
-    return await modal.present();
+
+    await modal.present();
+
+    const { data } = await modal.onWillDismiss();
+    console.log(data['selectedDate']);
   }
 
 }

@@ -150,4 +150,14 @@ export class IonicDatepickerComponent implements OnInit {
     return false;
   }
 
+  /**
+   * Dismiss model and return the selected date
+   * @param date, an instance of moment
+   */
+  dateSelected(date: moment.Moment): void {
+    this.viewCtrl.dismiss({
+      selectedDate: date.format('DD-MM-YYYY')
+    });
+  }
+
 }

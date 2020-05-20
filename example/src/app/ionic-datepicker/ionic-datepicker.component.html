@@ -28,7 +28,7 @@
           <label *ngIf="daysList[row+col] != null" [ngClass]="{
               disabled: isDisabled(daysList[row+col]), 
               today: (currentDate.format('DD-MM-YYYY') == daysList[row+col].format('DD-MM-YYYY'))
-            }">
+            }" (click)="dateSelected(daysList[row+col])">
             {{daysList[row+col].format('D')}}
           </label>
         </ion-col>
